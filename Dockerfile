@@ -6,9 +6,10 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
-RUN docker-php-ext-install bcmath mcrypt zip bz2 mbstring pcntl xsl
 
-RUN apt-get -y update && apt-get install -y curl git subversion unzip wget unzip
+RUN apt-get -y update && apt-get install -y curl git subversion unzip wget unzip libmcrypt-devel libbz2
+
+RUN docker-php-ext-install bcmath mcrypt zip bz2 mbstring pcntl xsl
 
 RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
  	&& curl -o /tmp/composer-setup.sig https://composer.github.io/installer.sig \
