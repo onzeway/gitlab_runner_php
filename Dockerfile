@@ -1,14 +1,18 @@
 FROM php:latest
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+
 RUN apt-get update -y
 RUN apt-get install -y \
+    build-essential \
     curl \
     git \
+    libmcrypt-dev \
+    libxslt-dev \
+    nodejs \
     subversion \
     unzip \
-    wget \
-    libmcrypt-dev \
-    libxslt-dev
+    wget
 
 RUN mkdir -p /composer/bin
 
