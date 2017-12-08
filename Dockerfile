@@ -1,4 +1,4 @@
-FROM php:latest
+FROM php:7.1
 
 RUN apt-get update -y
 RUN apt-get install -y \
