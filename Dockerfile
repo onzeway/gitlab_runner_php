@@ -13,7 +13,7 @@ RUN apt-get install -y \
     unzip \
     wget
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 
 RUN apt-get install -y nodejs
 
@@ -26,7 +26,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
-RUN pecl install xdebug-beta
+RUN pecl install xdebug
 
 RUN docker-php-ext-install -j$(nproc) iconv bcmath mbstring pcntl xsl && \
     docker-php-ext-configure gettext --with-gettext=shared && \
