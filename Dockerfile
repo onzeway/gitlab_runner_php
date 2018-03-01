@@ -26,7 +26,7 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 RUN echo "memory_limit=-1" > $PHP_INI_DIR/conf.d/memory-limit.ini
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
-RUN pecl install xdebug
+RUN pecl install xdebug-2.5.5
 
 RUN docker-php-ext-install -j$(nproc) iconv bcmath mbstring pcntl xsl && \
     docker-php-ext-configure gettext --with-gettext=shared && \
